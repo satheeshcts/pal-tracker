@@ -1,13 +1,15 @@
 package test.pivotal.pal.tracker;
 
 
+import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import io.pivotal.pal.tracker.JdbcTimeEntryRepository;
 import io.pivotal.pal.tracker.TimeEntry;
 import io.pivotal.pal.tracker.TimeEntryRepository;
 import org.junit.Before;
 import org.junit.Test;
-import org.mariadb.jdbc.MariaDbDataSource;
+
 import org.springframework.jdbc.core.JdbcTemplate;
+
 
 import javax.sql.DataSource;
 import java.util.List;
@@ -21,7 +23,9 @@ public class JdbcTimeEntryRepositoryTest {
 
     @Before
     public void setUp() throws Exception {
-        DataSource dataSource = new MariaDbDataSource(System.getenv("SPRING_DATASOURCE_URL"));
+        String springdatasourceURL=System.getenv("SPRING_DATASOURCE_URL");
+        MysqlDataSource dataSource = new MysqlDataSource();
+        dataSource.setURL(springdatasourceURL);
         subject = new JdbcTimeEntryRepository(dataSource);
 
         jdbcTemplate = new JdbcTemplate(dataSource);

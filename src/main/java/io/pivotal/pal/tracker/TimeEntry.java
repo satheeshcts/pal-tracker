@@ -76,11 +76,11 @@ public class TimeEntry {
     @Override
     public String toString() {
         return "TimeEntry{" +
-                "id=" + id +
-                ", projectId=" + projectId +
-                ", userId=" + userId +
-                ", date='" + date + '\'' +
-                ", hours=" + hours +
-                '}';
+            "id=" + id +
+            ", projectId=" + projectId +
+            ", userId=" + userId +
+            ", date='" + date + '\'' +
+            ", hours=" + hours +
+            '}';
     }
 }
